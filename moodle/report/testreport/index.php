@@ -23,13 +23,20 @@
  */
 
 require_once(dirname(_FILE_).'/../../config.php');
-require_login();
-$context = context_course::instance();                       //get context
-require_capability('report/testreport:view', $context);      //require capablity on context
-$id    = required_param('id', 0, PARAM_INT);
+require_once('./lib.php');
+require_once(dirname(__FILE__) .'/../../lib/gradelib.php');
+
+$id    = required_param('id',PARAM_INT);
+$course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
+$grade = grade_get_grades($id, 'mod', 'assign', 1, $userid_or_ids=0);
+print_r($grade);
+require_login($course);
+$context = context_course::instance($id);                                             
+require_capability('report/testreport:view', $context);                               
+$PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/report/testreport/index.php'),array('id' => $id));                              
-$PAGE->set_title(get_string('title', 'report_testreport'));       // set title
+$PAGE->set_title(get_string('title', 'report_testreport'));                           
 $PAGE->set_pagelayout('report');
-echo $OUTPUT->header();                                       // 11
-echo $OUTPUT->box(get_string('hello world'));                               // 12
-echo $OUTPUT->footer();           
+echo $OUTPUT->header();                                                                
+echo $OUTPUT->box($course->fullname);                               
+echo $OUTPUT->footer();

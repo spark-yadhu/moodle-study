@@ -22,5 +22,5 @@
  * @license   sparksupport.org 
  */
 
-$string['pluginname']  = 'report_testreport';
+$string['pluginname']  = 'testreport';
 $string['title']       = 'testreport';

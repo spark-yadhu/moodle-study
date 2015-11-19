@@ -23,6 +23,6 @@
  */
 
 $plugin->component = "report_testreport";  //plugin frankstyle name 
-$plugin->version   = 2015111700;           //plugin current version (YYYYMMDDXX)
-$plugin->requires  = 2015111600.00         //required moodle version
-$plugin->maturity  = MATURITY_BETA         //maturity of plugin
+$plugin->version   = 2015111801;           //plugin current version (YYYYMMDDXX)
+$plugin->requires  = 2015111600.00;         //required moodle version
+$plugin->maturity  = MATURITY_BETA;         //maturity of plugin
