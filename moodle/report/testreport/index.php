@@ -28,8 +28,8 @@ require_once(dirname(__FILE__) .'/../../lib/gradelib.php');
 
 $id    = required_param('id',PARAM_INT);
 $course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
-$grade = grade_get_grades($id, 'mod', 'assign', 1, $userid_or_ids=0);
-print_r($grade);
+//$grade = grade_get_grades($id, 'mod', 'assign', 1, $userid_or_ids=0);
+//print_r($grade);
 require_login($course);
 $context = context_course::instance($id);                                             
 require_capability('report/testreport:view', $context);                               
